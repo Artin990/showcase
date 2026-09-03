@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <title>ir-khodro</title>
+  </head>
+
+  <body>
+    <!-- pre loader -->
+    <div class="preloader">
+      <div class="loader"></div>
+    </div>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="menu" id="menuBtn">
+        <i class="bx bx-menu"></i>
+      </div>
+      <div class="site-header-icon">
+        <a href="index.html">
+          <img
+            class="header-logo"
+            src="assets/images/Logo/mainlogo.png"
+            alt="Logo"
+          />
+        </a>
+      </div>
+      <i class="bx bx-user"></i>
+    </header>
+
+    <!-- Fullscreen Menu -->
+    <div class="menu-overlay" id="menuOverlay">
+      <button class="close" id="closeBtn">
+        <i class="bx bx-x"></i>
+      </button>
+
+      <div class="menu-content">
+        <aside class="sidebar">
+          <nav class="sidebar-nav">
+            <a href="#" class="nav-link active" data-section="models">مدل</a>
+            <a href="#" class="nav-link" data-section="buy">خرید</a>
+            <a href="#" class="nav-link" data-section="info">اطلاعات بیشتر</a>
+            <a href="#" class="nav-link" data-section="services">سرویس ها</a>
+            <a href="#" class="nav-link" data-section="about">درباره من</a>
+          </nav>
+        </aside>
+
+        <main class="menu-main-content">
+          <!-- Models Section -->
+          <div class="menu-section active" id="models-section">
+            <div class="model-item" data-car="soren" data-price="850000000">
+              <div class="model-info">
+                <h3>IKCO Soren Elx 4</h3>
+                <img
+                  src="assets/images/cars/_iran_khodro_soren_elx_4-removebg-preview.png"
+                  alt=""
+                />
+                <p>Gasoline</p>
+              </div>
+              <i class="bx bx-chevron-left arrow"></i>
+            </div>
+
+            <div class="model-item" data-car="arisan" data-price="920000000">
+              <div class="model-info">
+                <h3>IKCO Arisan</h3>
+                <img src="assets/images/cars/arisan.png" alt="" />
+                <p>Gasoline</p>
+              </div>
+              <i class="bx bx-chevron-left arrow"></i>
+            </div>
+
+            <div class="model-item" data-car="reera" data-price="1200000000">
+              <div class="model-info">
+                <h3>IKCO Reera</h3>
+                <img
+                  src="assets/images/cars/photo1770997513-removebg-preview.png"
+                  alt=""
+                />
+                <p>Electric</p>
+              </div>
+              <i class="bx bx-chevron-left arrow"></i>
+            </div>
+
+            <div
+              class="model-item"
+              data-car="peugeot405"
+              data-price="680000000"
+            >
+              <div class="model-info">
+                <h3>Peugeot 405</h3>
+                <img
+                  src="assets/images/cars/photo1770997122-removebg-preview.png"
+                  alt=""
+                />
+                <p>Gasoline</p>
+              </div>
+              <i class="bx bx-chevron-left arrow"></i>
+            </div>
+
+            <div
+              class="model-item"
+              data-car="peugeot207"
+              data-price="750000000"
+            >
+              <div class="model-info">
+                <h3>Peugeot 207</h3>
+                <img
+                  src="assets/images/cars/144344989659264606-removebg-preview.png"
+                  alt=""
+                />
+                <p>Gasoline</p>
+              </div>
+              <i class="bx bx-chevron-left arrow"></i>
+            </div>
+          </div>
+
+          <!-- Buy Section -->
+          <div class="menu-section" id="buy-section">
+            <div class="buy-container">
+              <h2 class="buy-title">سبد خرید</h2>
+              <div class="cart-items" id="cartItems">
+                <p class="empty-cart">هیچ خودرویی انتخاب نشده است</p>
+              </div>
+              <div class="cart-summary" id="cartSummary" style="display: none">
+                <div class="summary-row">
+                  <span>تعداد خودرو:</span>
+                  <span id="totalCount">0</span>
+                </div>
+                <div class="summary-row total">
+                  <span>مجموع قیمت:</span>
+                  <span id="totalPrice">0 تومان</span>
+                </div>
+                <button class="continue-btn" id="continueBtn">
+                  ادامه خرید
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Info Section -->
+          <div class="menu-section" id="info-section">
+            <div class="info-container">
+              <h2 class="info-title">اطلاعات تماس</h2>
+
+              <div class="info-card">
+                <div class="info-item">
+                  <i class="bx bx-building"></i>
+                  <div>
+                    <h3>دفتر مرکزی ایران‌خودرو</h3>
+                    <p>تهران، خیابان آزادی، کیلومتر 18، شرکت ایران‌خودرو</p>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <i class="bx bx-phone"></i>
+                  <div>
+                    <h3>تلفن تماس</h3>
+                    <p>021-44787000</p>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <i class="bx bx-time"></i>
+                  <div>
+                    <h3>ساعات کاری</h3>
+                    <p>شنبه تا چهارشنبه: 8:00 صبح الی 17:00 عصر</p>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <i class="bx bx-envelope"></i>
+                  <div>
+                    <h3>پست الکترونیک</h3>
+                    <p>info@ikco.ir</p>
+                  </div>
+                </div>
+
+                <div class="info-item">
+                  <i class="bx bx-globe"></i>
+                  <div>
+                    <h3>وب‌سایت</h3>
+                    <p>www.ikco.ir</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Services Section -->
+          <div class="menu-section" id="services-section">
+            <div class="services-container">
+              <h2 class="services-title">خدمات ایران‌خودرو</h2>
+
+              <div class="service-card" data-link="warranty">
+                <i class="bx bx-shield-quarter"></i>
+                <h3>گارانتی و خدمات پس از فروش</h3>
+                <p>
+                  ارائه خدمات گارانتی معتبر و پشتیبانی کامل برای تمامی محصولات
+                </p>
+                <i class="bx bx-chevron-left"></i>
+              </div>
+
+              <div class="service-card" data-link="maintenance">
+                <i class="bx bx-wrench"></i>
+                <h3>تعمیرات و نگهداری</h3>
+                <p>سرویس دوره‌ای و تعمیرات تخصصی با قطعات اصلی و تیم مجرب</p>
+                <i class="bx bx-chevron-left"></i>
+              </div>
+
+              <div class="service-card" data-link="insurance">
+                <i class="bx bx-car"></i>
+                <h3>بیمه خودرو</h3>
+                <p>
+                  خدمات بیمه‌ای شامل بیمه بدنه و شخص ثالث با بهترین تعرفه‌ها
+                </p>
+                <i class="bx bx-chevron-left"></i>
+              </div>
+
+              <div class="service-card" data-link="parts">
+                <i class="bx bx-package"></i>
+                <h3>فروش قطعات یدکی</h3>
+                <p>تأمین قطعات اصلی و یدکی با گارانتی معتبر برای تمام مدل‌ها</p>
+                <i class="bx bx-chevron-left"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- About Me Section -->
+          <div class="menu-section" id="about-section">
+            <div class="about-container">
+              <div class="about-profile">
+                <div class="profile-image">
+                  <img  class="profile-image" src="assets/images/user/User.jpg" alt="">
+                </div>
+                <h2 class="profile-name">آرتین امیری</h2>
+                <p class="profile-school">مدرسه: هنرستان استارتاپی رکاد</p>
+                <div class="profile-info">
+                  <p>این پروژه به عنوان یک نمونه کار طراحی شده است</p>
+                  <p>برای نمایش توانایی‌های طراحی و توسعه وب</p>
+                </div>
+              </div>
+            </div>
+            <br>
+            <div class="about-container">
+              <div class="about-profile">
+                <div class="profile-image">
+                  <img  class="profile-image" src="assets/images/user/html.png" alt="">
+                </div>
+                <h2 class="profile-name">HTML</h2>
+                <p>ساختار سایت</p>
+              </div>
+            </div>
+            <br>
+            <div class="about-container">
+              <div class="about-profile">
+                <div class="profile-image">
+                  <img  class="profile-image" src="assets/images/user/css.png" alt="">
+                </div>
+                <h2 class="profile-name">CSS</h2>
+                <p>ظاهر سایت</p>
+              </div>
+            </div>
+            <br>
+            <div class="about-container">
+              <div class="about-profile">
+                <div class="profile-image">
+                  <img  class="profile-image" src="assets/images/user/java-script.png" alt="">
+                </div>
+                <h2 class="profile-name">Java Script</h2>
+                <p>پویانمایی سایت</p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- hero -->
+    <section class="hero">
+      <video autoplay muted loop playsinline>
+        <source src="assets/video/Haima 7x Teaser.mp4" type="video/mp4" />
+      </video>
+
+      <div class="overlay"></div>
+
+      <div class="content">
+        <h1>
+          <span>آینده از اینجا آغاز میشود</span>
+          <span class="span2">هایما S7</span>
+        </h1>
+
+        <button class="btn">
+          <span>بیشتر بدانید...</span>
+        </button>
+      </div>
+
+      <div class="scroll">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+
+      <div class="info">
+        <p>
+          مصرف سوخت ترکیبی [بازه مدل]: حدود 8.5 تا 9.5 لیتر در هر 100 کیلومتر
+          مصرف انرژی الکتریکی ترکیبی: ندارد (هایما S7 خودروی تمام بنزینی است و
+          مصرف برق ندارد)
+        </p>
+      </div>
+    </section>
+
+    <!-- cards after hero -->
+    <section class="after-hero-card">
+      <div class="card-one">
+        <img
+          class="card-one-img"
+          src="assets/images/cards/1/Copilot_20260213_200548.png"
+          alt=""
+        />
+        <div class="card-one-content">
+          <i class="bx bx-arrow-back bx-rotate-180"></i>
+          <p>Tara Gen One</p>
+        </div>
+      </div>
+
+      <div class="card-two">
+        <img
+          class="card-two-img"
+          src="assets/images/cards/1/content-banner-1.b424eddb.jpg"
+          alt=""
+        />
+        <div class="card-two-content">
+          <i class="bx bx-arrow-back bx-rotate-180"></i>
+          <p>Luna Gen One</p>
+        </div>
+      </div>
+
+      <div class="card-three">
+        <img
+          class="card-three-img"
+          src="assets/images/cards/1/Copilot_20260213_201332.png"
+          alt=""
+        />
+        <div class="card-three-content">
+          <i class="bx bx-arrow-back bx-rotate-180"></i>
+          <p>Dena Gen One</p>
+        </div>
+      </div>
+    </section>
+    <p class="after-card-text">
+      فوتون: مصرف سوخت ترکیبی (بازه مدل‌ها): 8.9 – 8.1 لیتر در 100 کیلومتر،
+      میزان انتشار CO₂ ترکیبی (بازه مدل‌ها): 210 – 192 گرم در کیلومتر | دنا نسل
+      یک: مصرف سوخت ترکیبی (بازه مدل‌ها): 7.6 – 7.1 لیتر در 100 کیلومتر، میزان
+      انتشار CO₂ ترکیبی (بازه مدل‌ها): 178 – 165 گرم در کیلومتر | تارا نسل یک:
+      مصرف سوخت ترکیبی (بازه مدل‌ها): 7.3 – 6.9 لیتر در 100 کیلومتر، میزان
+      انتشار CO₂ ترکیبی (بازه مدل‌ها): 172 – 158 گرم در کیلومتر
+    </p>
+
+    <!-- car type section -->
+    <div class="car-type-title-div">
+      <h1 class="car-type-title">شروع یک راه مطمئن با ایران‌خودرو</h1>
+      <div class="car-type-title-line"></div>
+    </div>
+    <section class="car-type-sec">
+      <div class="car-type-card-one">
+        <img
+          class="car-type-one-img"
+          src="assets/images/cards/3/back1.png"
+          alt=""
+        />
+        <div class="car-type-one-tag">
+          <p>Gasoline</p>
+        </div>
+        <div class="car-type-one-content">
+          <p>Renault Capture</p>
+          <i class="bx bx-arrow-back bx-rotate-180"></i>
+        </div>
+      </div>
+
+      <div class="car-type-card-two">
+        <img
+          class="car-type-two-img"
+          src="assets/images/cards/3/back2.png"
+          alt=""
+        />
+        <div class="car-type-two-tag">
+          <p>Gasoline</p>
+        </div>
+        <div class="car-type-two-content">
+          <p>Dong Feng S30</p>
+          <i class="bx bx-arrow-back bx-rotate-180"></i>
+        </div>
+      </div>
+
+      <div class="car-type-card-three">
+        <img
+          class="car-type-three-img"
+          src="assets/images/cards/3/front 1.png"
+          alt=""
+        />
+        <div class="car-type-three-tag">
+          <p>Gasoline</p>
+        </div>
+        <div class="car-type-three-content">
+          <p>Haima S8</p>
+          <i class="bx bx-arrow-back bx-rotate-180"></i>
+        </div>
+      </div>
+
+      <div class="car-type-card-four">
+        <img
+          class="car-type-four-img"
+          src="assets/images/cards/3/front 2.png"
+          alt=""
+        />
+        <div class="car-type-four-tag">
+          <p>Gasoline</p>
+        </div>
+        <div class="car-type-four-content">
+          <p>FOTON Thunlnad G7</p>
+          <i class="bx bx-arrow-back bx-rotate-180"></i>
+        </div>
+      </div>
+
+      <div class="car-type-card-five">
+        <img
+          class="car-type-five-img"
+          src="assets/images/cards/3/side 1.png"
+          alt=""
+        />
+        <div class="car-type-five-tag">
+          <p>Gasoline</p>
+        </div>
+        <div class="car-type-five-content">
+          <p>Haima S7</p>
+          <i class="bx bx-arrow-back bx-rotate-180"></i>
+        </div>
+      </div>
+
+      <div class="car-type-card-six">
+        <img
+          class="car-type-six-img"
+          src="assets/images/cards/3/side 2.png"
+          alt=""
+        />
+        <div class="car-type-six-tag">
+          <p>Gasoline</p>
+        </div>
+        <div class="car-type-six-content">
+          <p>Haima S5</p>
+          <i class="bx bx-arrow-back bx-rotate-180"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- cards before footer -->
+    <div class="card-two-div">
+      <div class="right-side-of-card-two-title"></div>
+      <h1 class="cards-before-footer-title">تجربه کنید</h1>
+      <div class="left-side-of-card-two-title"></div>
+    </div>
+    <section class="before-footer-card">
+      <div class="card-one">
+        <img
+          class="card-one-img"
+          src="assets/images/cards/2/Copilot_20260213_202217.png"
+          alt=""
+        />
+        <div class="card-one-content">
+          <p>سامانه جستجوی خودرو</p>
+          <i class="bx bx-arrow-back"></i>
+        </div>
+      </div>
+
+      <div class="card-two">
+        <img
+          class="card-two-img"
+          src="assets/images/cards/2/Copilot_20260213_204046 copy.jpg"
+          alt=""
+        />
+        <div class="card-two-content">
+          <p>فناوری برقی — آینده‌ای پایدار در حرکت</p>
+          <i class="bx bx-arrow-back"></i>
+        </div>
+      </div>
+
+      <div class="card-three">
+        <img
+          class="card-three-img"
+          src="assets/images/cards/2/Copilot_20260213_202834.png"
+          alt=""
+        />
+        <div class="card-three-content">
+          <p>تجربه‌ای متفاوت با ایران‌خودرو</p>
+          <i class="bx bx-arrow-back"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <section class="footer-sec">
+      <!-- language part -->
+      <div class="footer-language-part">
+        <h2>منطقه کنونی / زبان</h2>
+        <div class="footer-language-part-content">
+          <i class="bx bx-world bx-flip-horizontal"></i>
+          <p>ایران / فارسی</p>
+        </div>
+      </div>
+
+      <!-- location , contact , and social-part -->
+      <div class="location-contact-social-part">
+        <!-- location&contact part -->
+        <div class="location-contact-part">
+          <h2>دفاتر و راه‌های ارتباطی</h2>
+          <p>پرسشی دارید؟ ما پاسخ‌گو هستیم.</p>
+          <button class="location-contact-btn">با ما در ارتباط باشید</button>
+        </div>
+        <!-- social part -->
+        <div class="social-part">
+          <h2>راه های ارتباطی</h2>
+          <p>باما در ارتباط باشید از راه های ارتباطی ما</p>
+          <div class="social-icon">
+            <i class="bx bxl-instagram"></i>
+            <i class="bx bxl-telegram"></i>
+            <i class="bx bxl-youtube"></i>
+            <i class="bx bxl-twitter"></i>
+            <i class="bx bxl-pinterest-alt"></i>
+            <!-- 3 ta icon-->
+          </div>
+        </div>
+      </div>
+
+      <!--company part-->
+      <ul class="company-part">
+        <li class="company-text">ارتباط با سرمایه‌گذاران</li>
+        <li class="company-text">انطباق قانونی</li>
+        <li class="company-text">فرصت‌های شغلی</li>
+        <li class="company-text">اخبار و رسانه</li>
+        <li class="company-text">امنیت اطلاعات</li>
+        <li class="company-text">امور بین‌الملل</li>
+      </ul>
+      <div class="line"></div>
+      <!-- last text of footer -->
+      <div class="last-text-of-footer">
+        <h3>© 2026 گروه صنعتی ایران‌ خودرو کلیه حقوق محفوظ است</h3>
+        <p>
+          اگر مقادیر به‌صورت بازه‌ای اعلام شده باشند، این ارقام مربوط به یک
+          خودروی مشخص نبوده و بخشی از پیشنهاد فروش محسوب نمی‌شوند. این اطلاعات
+          صرفاً به‌منظور مقایسه مدل‌های مختلف ارائه شده و به محصولات عرضه‌شده
+          توسط شرکت اشاره دارند. تجهیزات و آپشن‌های اضافی (مانند متعلقات و ابعاد
+          تایر) می‌توانند بر پارامترهایی نظیر وزن، مقاومت غلتشی و آیرودینامیک
+          تأثیر گذاشته و در کنار شرایط جوی، وضعیت ترافیک و نحوه رانندگی، میزان
+          مصرف سوخت، مصرف انرژی، میزان انتشار آلاینده‌ها، برد حرکتی و عملکرد
+          خودرو را تحت تأثیر قرار دهند.
+        </p>
+      </div>
+      <img class="footer-logo" src="assets/images/Logo/mainlogo.png" alt="" />
+    </section>
+
+    <!-- progress bar -->
+    <div class="scroll-progress"></div>
+    <img class="goTop" src="assets/images/icons8-slide-up-50.png" alt="" />
+    <script src="js/main.js"></script>
+  </body>
+</html>

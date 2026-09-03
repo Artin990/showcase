@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<title>font check</title>
+<style>
+  body { font-family: "IRANSansX", "Tahoma", sans-serif; }
+  pre { direction: ltr; }
+</style>
+</head>
+<body>
+<pre id="out">checking...</pre>
+<script>
+  const out = [];
+  const results = {};
+  const done = () => {
+    out.push("body font-family: " + getComputedStyle(document.body).fontFamily);
+    for (const w of [400, 500, 600, 700, 800, 900]) {
+      try {
+        results["w" + w] = document.fonts.check(w + 'px 1px "IRANSansX"');
+      } catch (e) { results["w" + w] = "ERR " + e.message; }
+    }
+    out.push(JSON.stringify(results));
+    document.getElementById("out").textContent = out.join("\n");
+    document.title = "FONTCHECK:" + JSON.stringify(results);
+  };
+  Promise.all([
+    document.fonts.load('400 16px "IRANSansX"', "فارسی تست"),
+    document.fonts.load('700 16px "IRANSansX"', "فارسی تست"),
+    document.fonts.load('900 16px "IRANSansX"', "فارسی تست")
+  ]).then(done).catch(e => { out.push("load error: " + e.message); done(); });
+  setTimeout(done, 4000);
+</script>
+</body>
+</html>

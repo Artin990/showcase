@@ -1,0 +1,29 @@
+RewriteEngine On
+
+# اگر فایل یا پوشه واقعی درخواست شده بود (مثل assets, uploads) مستقیم سرو شود
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# در غیر این صورت همه درخواست‌ها به index.php هدایت شوند
+RewriteRule ^ index.php [L]
+
+# جلوگیری از نمایش لیست فایل‌های پوشه
+Options -Indexes
+
+# جلوگیری از دسترسی مستقیم به فایل‌های حساس در صورت وجود
+<FilesMatch "\.(env|sql|log)$">
+    Require all denied
+</FilesMatch>
+
+# هدرهای امنیتی (در صورت فعال بودن mod_headers روی هاست)
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    # CSP: اسکریپت از خود سایت + Lucide CDN؛ استایل‌های inline مجاز (ویوها از style="" و <style> استفاده می‌کنند)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'self'; form-action 'self'"
+    # HSTS فقط روی HTTPS معنا دارد؛ روی لوکال بی‌اثر است و برای هاست واقعی فعال می‌شود
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+</IfModule>

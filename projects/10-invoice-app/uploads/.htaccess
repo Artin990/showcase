@@ -1,0 +1,7 @@
+# اجازه اجرای هیچ اسکریپتی داخل این پوشه داده نمی‌شود؛
+# فقط فایل‌های استاتیک (تصویر) باید در این مسیر باز شوند.
+<FilesMatch "\.(php|php\d?|phtml|pl|py|cgi|sh|asp|aspx)$">
+    Require all denied
+</FilesMatch>
+
+Options -Indexes -ExecCGI
