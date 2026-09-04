@@ -229,7 +229,7 @@ let cartItems = [];
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=offer-products");
+    const res = await fetch("backend/offer-products.json");
     const data = await res.json();
     data.products.forEach((item) => {
       productsRoot.innerHTML += `        
@@ -252,7 +252,7 @@ let cartItems = [];
         counterOfProducts.textContent = cartItems.length + 1;
         (async () => {
           try {
-            const res = await fetch("backend/api.php?type=offer-products");
+            const res = await fetch("backend/offer-products.json");
             const data = await res.json();
             const item = data.products.find((obj) => obj.id == productId);
             cartItems.push(item);
@@ -327,7 +327,7 @@ const productsMarketOnOfferRoot = document.querySelector(
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=market-products-on-offer");
+    const res = await fetch("backend/market-products-on-offer.json");
     const data = await res.json();
     data.marketProducts.forEach((item) => {
       productsMarketOnOfferRoot.innerHTML += `        
@@ -351,7 +351,7 @@ const columnFour = document.querySelector(".column-four");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=part-products-1-4");
+    const res = await fetch("backend/part-products-1-4.json");
     const data = await res.json();
     data.productsPartImg.slice(0, 4).forEach((item) => {
       columnOne.innerHTML += ` <img src="${item.image}" alt="" /> `;
@@ -363,7 +363,7 @@ const columnFour = document.querySelector(".column-four");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=part-products-1-4");
+    const res = await fetch("backend/part-products-1-4.json");
     const data = await res.json();
     data.productsPartImg.slice(4, 8).forEach((item) => {
       columnTwo.innerHTML += ` <img src="${item.image}" alt="" /> `;
@@ -375,7 +375,7 @@ const columnFour = document.querySelector(".column-four");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=part-products-1-4");
+    const res = await fetch("backend/part-products-1-4.json");
     const data = await res.json();
     data.productsPartImg.slice(8, 12).forEach((item) => {
       columnThree.innerHTML += ` <img src="${item.image}" alt="" /> `;
@@ -387,7 +387,7 @@ const columnFour = document.querySelector(".column-four");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=part-products-1-4");
+    const res = await fetch("backend/part-products-1-4.json");
     const data = await res.json();
     data.productsPartImg.slice(12, 16).forEach((item) => {
       columnFour.innerHTML += ` <img src="${item.image}" alt="" /> `;
@@ -403,7 +403,7 @@ const bestProductsRoot = document.querySelector(".best-products-root");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=best-products");
+    const res = await fetch("backend/best-products.json");
     const data = await res.json();
     data.forEach((item) => {
       bestProductsRoot.innerHTML += `
@@ -444,7 +444,7 @@ const columnFourPartTwo = document.querySelector(".column-four-part-two");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=part-products-5-8");
+    const res = await fetch("backend/part-products-5-8.json");
     const data = await res.json();
     data.productsPartImg.slice(0, 4).forEach((item) => {
       columnOnePartTwo.innerHTML += ` <img src="${item.image}" alt="" /> `;
@@ -456,7 +456,7 @@ const columnFourPartTwo = document.querySelector(".column-four-part-two");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=part-products-5-8");
+    const res = await fetch("backend/part-products-5-8.json");
     const data = await res.json();
     data.productsPartImg.slice(4, 8).forEach((item) => {
       columnTwoPartTwo.innerHTML += ` <img src="${item.image}" alt="" /> `;
@@ -468,7 +468,7 @@ const columnFourPartTwo = document.querySelector(".column-four-part-two");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=part-products-5-8");
+    const res = await fetch("backend/part-products-5-8.json");
     const data = await res.json();
     data.productsPartImg.slice(8, 12).forEach((item) => {
       columnThreePartTwo.innerHTML += ` <img src="${item.image}" alt="" /> `;
@@ -480,7 +480,7 @@ const columnFourPartTwo = document.querySelector(".column-four-part-two");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=part-products-5-8");
+    const res = await fetch("backend/part-products-5-8.json");
     const data = await res.json();
     data.productsPartImg.slice(12, 16).forEach((item) => {
       columnFourPartTwo.innerHTML += ` <img src="${item.image}" alt="" /> `;
@@ -495,7 +495,7 @@ const offerAllProductsRoot = document.querySelector(".offer-products-root");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=offer-all-products");
+    const res = await fetch("backend/offer-all-products.json");
     const data = await res.json();
     data.allOfferProducts.forEach((item) => {
       offerAllProductsRoot.innerHTML += `
