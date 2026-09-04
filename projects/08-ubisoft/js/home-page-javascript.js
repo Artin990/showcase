@@ -73,7 +73,7 @@ const sliderGameRoot = document.querySelector(".first-games-slider-root");
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=first");
+    const res = await fetch("backend/top-slider-games-data.json");
     const data = await res.json();
     data.map((item) => {
       if (item.discountPercent == null) {
@@ -136,7 +136,7 @@ const secondSliderGameRoot = document.querySelector(
 
 (async () => {
   try {
-    const res = await fetch("backend/api.php?type=second");
+    const res = await fetch("backend/top%20slider%20games%20data%20img%20second.json");
     const data = await res.json();
     data.map((item) => {
       if (item.discountPercent == null) {
