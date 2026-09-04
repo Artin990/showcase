@@ -3,237 +3,467 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نمایشگاه پروژه‌های توسعه وب</title>
+<title>نمایشگاه پروژه‌های آرتین امیری</title>
+<meta name="description" content="نمایشگاه زنده پروژه‌های توسعه وب — فروشگاه‌ها، کلون‌ها و پورتفولیوها">
 <style>
+@font-face{font-family:'Peyda';src:url('assets/fonts/Peyda-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Peyda';src:url('assets/fonts/Peyda-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Peyda';src:url('assets/fonts/Peyda-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:'Peyda';src:url('assets/fonts/Peyda-Black.ttf') format('truetype');font-weight:900;font-display:swap}
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#212121;--bg-surface:#171717;--bg-card:#2a2a2a;--bg-hover:#333;--border:#3a3a3a;--border-hover:#555;--text:#e8e8e8;--text-secondary:#a0a0a0;--text-muted:#707070;--accent:#10a37f;--accent-hover:#0e8c6b;--accent-bg:rgba(16,163,127,0.12);--radius:10px;--radius-lg:16px;--shadow:0 1px 3px rgba(0,0,0,0.3),0 4px 12px rgba(0,0,0,0.2);--font:system-ui,-apple-system,'Vazirmatn',sans-serif;--font-mono:'SF Mono','IBM Plex Mono',monospace;--transition:0.2s ease}
+:root{
+  --abyss:#060b18;         /* page depth */
+  --deep:#0b1526;          /* panels */
+  --card:#0f1d33;          /* card glass */
+  --card-hover:#13253f;
+  --line:rgba(88,189,175,.14);
+  --line-strong:rgba(88,189,175,.45);
+  --glow:#58bdaf;          /* brand teal */
+  --glow-soft:rgba(88,189,175,.12);
+  --sand:#e9e6dc;          /* moonlit text */
+  --mist:#8fa3b8;          /* secondary */
+  --faint:#5a6e82;
+  --amber:#f0ad4e;
+  --radius:14px;
+  --font:'Peyda',system-ui,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',Consolas,monospace;
+}
 html{scroll-behavior:smooth}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+body{font-family:var(--font);background:var(--abyss);color:var(--sand);line-height:1.7;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
-::selection{background:var(--accent-bg);color:var(--accent)}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--bg-surface)}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
-.app{max-width:1280px;margin:0 auto;padding:0 24px}
-.header{padding:24px 0 8px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);margin-bottom:32px}
-.header-left{display:flex;align-items:center;gap:12px}
-.header-logo{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff}
-.header-title{font-size:18px;font-weight:600}
-.header-badge{font-size:11px;padding:3px 10px;border-radius:100px;background:var(--accent-bg);color:var(--accent);font-weight:500}
-.header-nav{display:flex;align-items:center;gap:8px}
-.search-box{position:relative;width:240px}
-.search-box input{width:100%;padding:8px 36px 8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg-surface);color:var(--text);font-size:13px;font-family:var(--font);outline:none;transition:var(--transition)}
-.search-box input:focus{border-color:var(--accent)}
-.search-box input::placeholder{color:var(--text-muted)}
-.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--text-muted);pointer-events:none}
-.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
-.filter-btn{padding:6px 14px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--text-secondary);font-size:12.5px;font-family:var(--font);cursor:pointer;transition:var(--transition);white-space:nowrap}
-.filter-btn:hover{border-color:var(--text-muted);color:var(--text)}
-.filter-btn.active{background:var(--accent-bg);border-color:var(--accent);color:var(--accent)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:40px}
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);cursor:pointer;animation:fadeUp 0.4s ease forwards;opacity:0}
+button{font-family:var(--font)}
+::selection{background:var(--glow-soft);color:var(--glow)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--abyss)}
+::-webkit-scrollbar-thumb{background:#1c3049;border-radius:3px}
+
+/* ambient ocean canvas */
+#ocean{position:fixed;inset:0;z-index:0;pointer-events:none}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(ellipse 90% 65% at 50% 0%, transparent 40%, var(--abyss) 100%)}
+
+.app{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 28px}
+
+/* ---------- hero ---------- */
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding-top:48px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--glow);font-size:14px;font-weight:500;letter-spacing:.02em;margin-bottom:18px}
+.hero-eyebrow::before{content:'';width:34px;height:1px;background:var(--glow);opacity:.7}
+.hero h1{font-weight:900;font-size:clamp(44px,7.5vw,86px);line-height:1.15;letter-spacing:-.01em;
+  background:linear-gradient(180deg,#f5f2ea 30%,rgba(88,189,175,.75));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{max-width:560px;margin-top:20px;font-size:17px;color:var(--mist);font-weight:400}
+.hero-sub b{color:var(--sand);font-weight:700}
+.hero-stats{display:flex;gap:44px;margin-top:44px;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;gap:2px}
+.stat b{font-size:34px;font-weight:900;color:var(--glow);font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--faint)}
+.hero-scroll{position:absolute;bottom:26px;right:50%;transform:translateX(50%);color:var(--faint);font-size:12px;display:flex;flex-direction:column;align-items:center;gap:6px;animation:bob 2.4s ease-in-out infinite}
+.hero-scroll svg{width:16px;height:16px}
+@keyframes bob{0%,100%{transform:translateX(50%) translateY(0)}50%{transform:translateX(50%) translateY(7px)}}
+
+/* ---------- toolbar ---------- */
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:18px 0 14px;border-top:1px solid var(--line);margin-top:20px}
+.section-label{font-size:13px;font-weight:700;color:var(--sand);display:flex;align-items:center;gap:8px}
+.section-label i{font-style:normal;color:var(--glow)}
+.search{position:relative;width:280px;max-width:100%}
+.search input{width:100%;padding:10px 40px 10px 14px;border-radius:100px;border:1px solid var(--line);
+  background:rgba(11,21,38,.72);backdrop-filter:blur(10px);color:var(--sand);font-size:13.5px;font-family:var(--font);outline:none;transition:border-color .2s}
+.search input:focus{border-color:var(--line-strong)}
+.search input::placeholder{color:var(--faint)}
+.search svg{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:15px;height:15px;color:var(--faint);pointer-events:none}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.chip{padding:7px 16px;border-radius:100px;border:1px solid var(--line);background:rgba(11,21,38,.55);
+  color:var(--mist);font-size:13px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.chip:hover{border-color:var(--line-strong);color:var(--sand)}
+.chip.active{background:var(--glow);border-color:var(--glow);color:#06231f;font-weight:700}
+
+/* ---------- grid & cards ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px;padding:14px 0 56px}
+.card{position:relative;background:linear-gradient(160deg,rgba(15,29,51,.88),rgba(11,21,38,.94));
+  border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  transition:transform .35s cubic-bezier(.2,.8,.25,1),border-color .25s,box-shadow .35s;
+  transform-style:preserve-3d;will-change:transform;animation:rise .5s ease backwards}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.card:hover{border-color:var(--line-strong);box-shadow:0 20px 50px -18px rgba(0,0,0,.7),0 0 0 1px rgba(88,189,175,.08),0 0 44px -14px rgba(88,189,175,.35)}
 .card.hidden{display:none}
-.card:hover{border-color:var(--border-hover);background:var(--bg-hover);transform:translateY(-2px)}
-.card:nth-child(1){animation-delay:0.02s}.card:nth-child(2){animation-delay:0.04s}.card:nth-child(3){animation-delay:0.06s}
-.card:nth-child(4){animation-delay:0.08s}.card:nth-child(5){animation-delay:0.10s}.card:nth-child(6){animation-delay:0.12s}
-.card:nth-child(7){animation-delay:0.14s}.card:nth-child(8){animation-delay:0.16s}.card:nth-child(9){animation-delay:0.18s}
-.card:nth-child(10){animation-delay:0.20s}.card:nth-child(11){animation-delay:0.22s}.card:nth-child(12){animation-delay:0.24s}
-.card:nth-child(13){animation-delay:0.26s}
-@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-.card-thumb{height:140px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.card-thumb-label{font-size:28px;font-weight:800;color:rgba(255,255,255,0.08);letter-spacing:0.05em;user-select:none;transition:var(--transition)}
-.card:hover .card-thumb-label{transform:scale(1.08)}
-.card-thumb-cat{position:absolute;top:10px;right:10px;padding:3px 10px;border-radius:6px;font-size:10.5px;font-weight:600;backdrop-filter:blur(8px);background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.1);color:#fff}
-.card-body{padding:14px 16px 16px}
-.card-title{font-size:15px;font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:8px}
-.card-title-en{font-family:var(--font-mono);font-size:10px;color:var(--text-muted);font-weight:400}
-.card-desc{font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card-tech{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
-.card-tech-tag{padding:2px 8px;border-radius:4px;font-size:10px;font-family:var(--font-mono);background:var(--bg-surface);border:1px solid var(--border);color:var(--text-muted)}
-.card-footer{display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:1px solid var(--border)}
-.card-status{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text-muted)}
-.card-status-dot{width:6px;height:6px;border-radius:50%}
-.card-status-dot.ok{background:var(--accent)}
-.card-status-dot.wip{background:#f0ad4e}
-.modal-overlay{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px}
-.modal-overlay.active{display:flex}
-.modal{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);max-width:640px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.5)}
-.modal-header{padding:20px 24px 14px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--border)}
-.modal-header h2{font-size:18px;font-weight:600;line-height:1.3}
-.modal-close{width:32px;height:32px;flex-shrink:0;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
-.modal-close:hover{border-color:var(--text-muted);color:var(--text)}
-.modal-body{padding:20px 24px 24px}
-.modal-body p{font-size:13.5px;color:var(--text-secondary);line-height:1.7;margin-bottom:16px}
-.modal-info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
-.modal-info-item{background:var(--bg-surface);border-radius:8px;padding:10px 12px}
-.modal-info-label{font-size:10.5px;color:var(--text-muted);margin-bottom:3px}
-.modal-info-value{font-size:13px;font-weight:500}
-.modal-tech-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
-.modal-tech-item{padding:3px 10px;border-radius:5px;font-size:11px;font-family:var(--font-mono);background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary)}
-.modal-actions{display:flex;gap:10px;padding-top:16px;border-top:1px solid var(--border)}
-.modal-actions a{padding:9px 20px;border-radius:8px;font-size:13px;font-weight:500;font-family:var(--font);transition:var(--transition);display:flex;align-items:center;gap:6px}
-.btn-pry{background:var(--accent);color:#fff;border:none}
-.btn-pry:hover{background:var(--accent-hover)}
-.btn-sec{background:var(--bg-surface);color:var(--text);border:1px solid var(--border)}
-.btn-sec:hover{border-color:var(--text-muted)}
-.footer{text-align:center;padding:24px;border-top:1px solid var(--border);color:var(--text-muted);font-size:12px}
-@media(max-width:768px){
-  .app{padding:0 16px}
-  .header{flex-direction:column;align-items:flex-start;gap:12px}
-  .search-box{width:100%}
+.card-glow{position:absolute;inset:0;opacity:0;transition:opacity .35s;pointer-events:none;
+  background:radial-gradient(420px 200px at var(--mx,50%) var(--my,0%),rgba(88,189,175,.13),transparent 65%)}
+.card:hover .card-glow{opacity:1}
+.thumb{height:150px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.thumb::after{content:'';position:absolute;inset:0;background:
+  repeating-linear-gradient(45deg,rgba(255,255,255,.028) 0 1px,transparent 1px 14px)}
+.thumb-letter{font-size:76px;font-weight:900;color:rgba(255,255,255,.16);line-height:1;
+  text-shadow:0 10px 40px rgba(0,0,0,.45);transition:transform .4s cubic-bezier(.2,.8,.25,1);user-select:none}
+.card:hover .thumb-letter{transform:scale(1.1) translateY(-3px)}
+.thumb-cat{position:absolute;top:12px;right:12px;display:flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:100px;font-size:11.5px;font-weight:500;
+  background:rgba(4,10,20,.55);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(8px);color:#dfe9e4}
+.thumb-cat svg{width:12px;height:12px}
+.thumb-index{position:absolute;bottom:10px;left:14px;font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.38);letter-spacing:.08em}
+.body{padding:16px 18px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.title-row{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.card-title{font-size:16.5px;font-weight:700;color:var(--sand)}
+.card-title-en{font-family:var(--mono);font-size:10px;color:var(--faint);font-weight:400;letter-spacing:.03em;white-space:nowrap}
+.card-desc{font-size:13px;color:var(--mist);line-height:1.75;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:46px}
+.tech{display:flex;flex-wrap:wrap;gap:5px}
+.tag{padding:2.5px 9px;border-radius:6px;font-size:10.5px;font-family:var(--mono);
+  background:rgba(6,11,24,.6);border:1px solid var(--line);color:var(--mist)}
+.footer-row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:11px;border-top:1px solid rgba(88,189,175,.09)}
+.status{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mist)}
+.dot{width:6px;height:6px;border-radius:50%;box-shadow:0 0 8px currentColor}
+.dot.ok{background:var(--glow);color:var(--glow)}
+.dot.wip{background:var(--amber);color:var(--amber)}
+.open-hint{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--faint);transition:color .25s,gap .25s}
+.open-hint svg{width:13px;height:13px;transform:scaleX(-1)}
+.card:hover .open-hint{color:var(--glow);gap:9px}
+
+/* ---------- modal ---------- */
+.overlay{position:fixed;inset:0;z-index:60;background:rgba(3,7,15,.72);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
+.overlay.active{opacity:1;visibility:visible}
+.modal{background:linear-gradient(165deg,#101f38,#0b1526);border:1px solid var(--line-strong);border-radius:20px;
+  max-width:620px;width:100%;max-height:86vh;overflow-y:auto;box-shadow:0 40px 100px rgba(0,0,0,.6);
+  transform:translateY(16px) scale(.98);transition:transform .3s cubic-bezier(.2,.8,.25,1)}
+.overlay.active .modal{transform:none}
+.modal-hero{height:120px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.modal-hero span{font-size:64px;font-weight:900;color:rgba(255,255,255,.18)}
+.modal-close{position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.15);
+  background:rgba(4,10,20,.5);color:#cfd8dc;font-size:15px;cursor:pointer;backdrop-filter:blur(8px);transition:all .2s;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{border-color:var(--line-strong);color:#fff}
+.modal-body{padding:22px 26px 26px}
+.modal-body h2{font-size:21px;font-weight:900;margin-bottom:6px}
+.modal-body h2 small{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400;margin-right:8px}
+.modal-body>p{font-size:13.5px;color:var(--mist);line-height:1.85;margin-bottom:18px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px}
+.info-item{background:rgba(6,11,24,.5);border:1px solid rgba(88,189,175,.08);border-radius:10px;padding:10px 14px}
+.info-item i{display:block;font-style:normal;font-size:11px;color:var(--faint);margin-bottom:2px}
+.info-item b{font-size:13.5px;font-weight:500;color:var(--sand)}
+.modal-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}
+.modal-tags span{padding:4px 12px;border-radius:7px;font-size:11.5px;font-family:var(--mono);
+  background:rgba(88,189,175,.07);border:1px solid var(--line);color:var(--glow)}
+.actions{display:flex;gap:10px;padding-top:18px;border-top:1px solid rgba(88,189,175,.1)}
+.btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:11px;font-size:14px;font-weight:700;transition:all .2s}
+.btn svg{width:16px;height:16px}
+.btn-live{background:var(--glow);color:#06231f}
+.btn-live:hover{box-shadow:0 8px 26px -8px rgba(88,189,175,.7);transform:translateY(-1px)}
+.btn-gh{background:transparent;color:var(--sand);border:1px solid var(--line-strong)}
+.btn-gh:hover{background:rgba(88,189,175,.08)}
+.btn.disabled{opacity:.35;pointer-events:none}
+
+footer{border-top:1px solid var(--line);padding:26px;text-align:center;color:var(--faint);font-size:12.5px;position:relative;z-index:2}
+footer b{color:var(--glow);font-weight:700}
+
+.empty{grid-column:1/-1;text-align:center;padding:70px 0;color:var(--faint)}
+.empty b{display:block;font-size:19px;color:var(--mist);font-weight:700;margin-bottom:6px}
+
+@media (max-width:720px){
+  .app{padding:0 18px}
+  .hero{min-height:74vh}
+  .hero-stats{gap:26px}
+  .stat b{font-size:26px}
   .grid{grid-template-columns:1fr}
-  .modal-info{grid-template-columns:1fr}
-  .modal-actions{flex-direction:column}
-  .modal-actions a{justify-content:center}
+  .toolbar{flex-direction:column;align-items:stretch}
+  .search{width:100%}
+  .info{grid-template-columns:1fr}
+  .actions{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important}
+  #ocean{display:none}
 }
 </style>
 </head>
 <body>
-<div class="app">
-  <header class="header">
-    <div class="header-left">
-      <div class="header-logo">P</div>
-      <span class="header-title">نمایشگاه پروژه‌ها</span>
-      <span class="header-badge">۱۳ پروژه</span>
-    </div>
-    <div class="header-nav">
-      <div class="search-box">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" id="searchInput" placeholder="جستجوی پروژه..." oninput="filterProjects()">
-      </div>
-    </div>
-  </header>
+<canvas id="ocean" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
 
-  <div class="filters" id="filters">
-    <button class="filter-btn active" data-filter="all" onclick="setFilter('all',this)">همه</button>
-    <button class="filter-btn" data-filter="ecommerce" onclick="setFilter('ecommerce',this)">فروشگاهی</button>
-    <button class="filter-btn" data-filter="edu" onclick="setFilter('edu',this)">آموزشی</button>
-    <button class="filter-btn" data-filter="gaming" onclick="setFilter('gaming',this)">گیمینگ</button>
-    <button class="filter-btn" data-filter="corp" onclick="setFilter('corp',this)">شرکتی</button>
-    <button class="filter-btn" data-filter="tool" onclick="setFilter('tool',this)">ابزاری</button>
-    <button class="filter-btn" data-filter="personal" onclick="setFilter('personal',this)">شخصی</button>
+<div class="app">
+  <section class="hero">
+    <span class="hero-eyebrow">نمایشگاه زنده روی گیت‌هاب پیج</span>
+    <h1>هر موج، یک پروژه</h1>
+    <p class="hero-sub">مجموعه‌ای از <b>فروشگاه‌های آنلاین</b>، <b>کلون‌های حرفه‌ای</b> و <b>پورتفولیوها</b> — همه زنده، همه قابل کلیک. روی هر کارت بزنید تا جزئیاتش باز شود.</p>
+    <div class="hero-stats">
+      <div class="stat"><b id="stTotal">۰</b><span>پروژه</span></div>
+      <div class="stat"><b id="stShop">۰</b><span>فروشگاه و کلون</span></div>
+      <div class="stat"><b id="stDone">۰</b><span>تکمیل‌شده</span></div>
+    </div>
+    <div class="hero-scroll">
+      <span>اسکرول کنید</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <span class="section-label"><i>✦</i> پروژه‌ها</span>
+    <div class="filters" id="filters"></div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="جستجو در پروژه‌ها…">
+    </div>
   </div>
 
   <div class="grid" id="grid"></div>
 </div>
 
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
-  <div class="modal">
-    <div class="modal-header">
-      <h2 id="mTitle"></h2>
-      <button class="modal-close" onclick="closeModal()">✕</button>
-    </div>
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <div class="modal-hero" id="mHero"><span id="mLetter"></span><button class="modal-close" id="mClose" aria-label="بستن">✕</button></div>
     <div class="modal-body">
+      <h2 id="mTitle"></h2>
       <p id="mDesc"></p>
-      <div class="modal-info">
-        <div class="modal-info-item"><div class="modal-info-label">دسته‌بندی</div><div class="modal-info-value" id="mCat"></div></div>
-        <div class="modal-info-item"><div class="modal-info-label">وضعیت</div><div class="modal-info-value" id="mStatus"></div></div>
-        <div class="modal-info-item"><div class="modal-info-label">تکنولوژی‌ها</div><div class="modal-info-value" id="mTech"></div></div>
-        <div class="modal-info-item"><div class="modal-info-label">نوع</div><div class="modal-info-value" id="mType"></div></div>
+      <div class="info">
+        <div class="info-item"><i>دسته‌بندی</i><b id="mCat"></b></div>
+        <div class="info-item"><i>وضعیت</i><b id="mStatus"></b></div>
+        <div class="info-item"><i>نوع</i><b id="mType"></b></div>
+        <div class="info-item"><i>فناوری‌ها</i><b id="mTech"></b></div>
       </div>
-      <div class="modal-tech-list" id="mTechTags"></div>
-      <div class="modal-actions">
-        <a class="btn-pry" id="mGithub" href="#" target="_blank">مشاهده در GitHub</a>
-        <a class="btn-sec" id="mLive" href="#" target="_blank">نسخه زنده</a>
+      <div class="modal-tags" id="mTags"></div>
+      <div class="actions">
+        <a class="btn btn-live" id="mLive" target="_blank">مشاهده زنده
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        <a class="btn btn-gh" id="mGithub" target="_blank">گیت‌هاب</a>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="footer">
-  © ۲۰۲۶ — تمامی حقوق محفوظ است
-</footer>
+<footer>ساخته‌شده با <b>Three.js</b> و <b>Peyda</b> — © ۲۰۲۶ آرتین امیری</footer>
 
 <script>
+/* ================= data ================= */
 const ICONS = {
-  ecommerce:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.96-1.61L23 6H6"/></svg>',
-  edu:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>',
-  gaming:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg>',
-  corp:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>',
-  tool:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',
-  personal:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+  ecommerce:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.96-1.61L23 6H6"/></svg>',
+  edu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></svg>',
+  gaming:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="12" x2="10" y2="12"/><line x1="8" y1="10" x2="8" y2="14"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/><rect x="2" y="6" width="20" height="12" rx="2"/></svg>',
+  corp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>',
+  tool:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>',
+  personal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'
 };
-const CAT_NAMES = {ecommerce:'فروشگاهی',edu:'آموزشی',gaming:'گیمینگ',corp:'شرکتی',tool:'ابزاری',personal:'شخصی'};
+const CATS = {ecommerce:'فروشگاهی',edu:'آموزشی',gaming:'گیمینگ',corp:'شرکتی',tool:'ابزاری',personal:'شخصی'};
 
 const projects = [
   {id:1,name:'کالج رکاد',nameEn:'Rokad College',desc:'پلتفرم آموزشی مدرن مؤسسه رکاد با سیستم دوره‌های آنلاین و آفلاین، اسلایدر تعاملی Swiper و طراحی واکنش‌گرا با Tailwind.',cat:'edu',tech:['React 18','Vite','Tailwind 4','Swiper 11'],status:'ok',type:'فرانت‌اند',colors:['#202A5A','#58BDAF'],letter:'ر',github:'https://github.com/Artin990/rokad-college',live:'https://artin990.github.io/rokad-college/'},
   {id:2,name:'رکاد وب',nameEn:'Rokad Web',desc:'وبسایت اصلی هنرستان استارتاپی رکاد با هیروی تعاملی، سیستم پیش‌ثبت‌نام، بخش مدارس و افتخارات. ساخته شده با Next.js و Tailwind.',cat:'edu',tech:['Next.js','React','Tailwind','Framer Motion','Sass'],status:'ok',type:'فرانت‌اند',colors:['#58BDAF','#202A5A'],letter:'ر',github:'https://github.com/Artin990/rokad-web',live:'https://artin990.github.io/rokad-web/'},
   {id:3,name:'کلون Call of Duty',nameEn:'COD Clone',desc:'کلون حرفه‌ای وبسایت رسمی Call of Duty با منوی چندسطحی همبرگری، پری‌لودر انیمیشنی و گالری تصاویر.',cat:'gaming',tech:['HTML5','CSS3','JavaScript'],status:'ok',type:'فرانت‌اند',colors:['#1a1a2e','#e94560'],letter:'C',github:'#',live:'https://artin990.github.io/showcase/projects/03-cod-clone/'},
   {id:4,name:'ایران خودرو',nameEn:'Iran Khodro',desc:'کلون مدرن وبسایت ایران خودرو با منوی تمام‌صفحه، پری‌لودر و انیمیشن‌های تعاملی با Animate.css.',cat:'corp',tech:['HTML5','CSS3','JavaScript','Animate.css'],status:'ok',type:'فرانت‌اند',colors:['#0d1b2a','#1b4332'],letter:'خ',github:'#',live:'https://artin990.github.io/showcase/projects/04-iran-khodro/'},
-  {id:5,name:'بوم',nameEn:'Boom',desc:'فروشگاه آنلاین با مرور و جستجوی محصولات، صفحه جزئیات، احراز هویت و دیتای استاتیک — کاملاً قابل اجرا بدون سرور.',cat:'ecommerce',tech:['React 19','Vite','Tailwind 4','React Router'],status:'ok',type:'فول‌استک',colors:['#0f0c29','#302b63'],letter:'B',github:'https://github.com/Artin990/boom',live:'https://artin990.github.io/boom/'},
+  {id:5,name:'بوم',nameEn:'Boom',desc:'فروشگاه آنلاین با مرور و جستجوی محصولات، صفحه جزئیات، احراز هویت و دیتای استاتیک — کاملاً قابل اجرا بدون سرور.',cat:'ecommerce',tech:['React 19','Vite','Tailwind 4','React Router'],status:'ok',type:'فول‌استک',colors:['#0f0c29','#302b63'],letter:'ب',github:'https://github.com/Artin990/boom',live:'https://artin990.github.io/boom/'},
   {id:6,name:'ترنج',nameEn:'Toranj',desc:'فروشگاه آنلاین پیشرفته با سبد خرید، ثبت سفارش، لیست علاقه‌مندی‌ها و انیمیشن‌های حرفه‌ای Framer Motion.',cat:'ecommerce',tech:['React 19','Vite','Tailwind 4','Framer Motion','React Router'],status:'ok',type:'فرانت‌اند',colors:['#2d1b4e','#6c3483'],letter:'ت',github:'https://github.com/Artin990/toranj',live:'https://artin990.github.io/Toranj/'},
   {id:7,name:'دیجیکالا',nameEn:'Digikala Clone',desc:'کلون دقیق صفحه اصلی دیجیکالا با بیش از ۱۰۰۰ خط کد — منوی دسته‌بندی، بنرهای GIF، اسلایدر محصولات و طراحی واکنش‌گرا.',cat:'ecommerce',tech:['HTML5','CSS3','JavaScript'],status:'ok',type:'فرانت‌اند',colors:['#e63946','#ff6b6b'],letter:'د',github:'#',live:'https://artin990.github.io/showcase/projects/07-digikala/'},
   {id:8,name:'یوبی‌سافت',nameEn:'Ubisoft Clone',desc:'کلون وبسایت رسمی Ubisoft با طراحی تاریک، منوی ناوبری با زیرمنوی گیم‌ها و استایل‌دهی با Sass.',cat:'gaming',tech:['HTML5','Sass/CSS3','JavaScript','Boxicons'],status:'ok',type:'فرانت‌اند',colors:['#0a0a0a','#1a1a3e'],letter:'U',github:'#',live:'https://artin990.github.io/showcase/projects/08-ubisoft/'},
   {id:9,name:'سبزلرن',nameEn:'Sabz Learn',desc:'کلون پلتفرم آموزشی سبزلرن با اپلیکیشن React، طراحی مدرن و سیستم دوره‌های آموزشی.',cat:'edu',tech:['React','Vite','Tailwind'],status:'ok',type:'فرانت‌اند',colors:['#2e7d32','#4caf50'],letter:'س',github:'https://github.com/Artin990/sabz-learn',live:'https://artin990.github.io/sabz-learn/'},
-  {id:10,name:'سامانه فاکتور',nameEn:'Invoice App',desc:'سامانه مدیریت فاکتور با معماری MVC در PHP — پنل ادمین کامل، کاربران، اشتراک‌ها، تخفیف‌ها، خروجی اکسل و تنظیمات سایت.',cat:'tool',tech:['PHP 8','MVC','MySQL','Tailwind','JavaScript'],status:'ok',type:'فول‌استک',colors:['#1a1a2e','#16213e'],letter:'ف',github:'#',live:'https://artin990.github.io/showcase/projects/10-invoice-app/'},
+  {id:10,name:'سامانه فاکتور',nameEn:'Invoice App',desc:'سامانه مدیریت فاکتور با معماری MVC در PHP — پنل ادمین کامل، کاربران، اشتراک‌ها، تخفیف‌ها، خروجی اکسل و تنظیمات سایت.',cat:'tool',tech:['PHP 8','MVC','MySQL','Tailwind','JavaScript'],status:'ok',type:'فول‌استک',colors:['#1a1a2e','#16213e'],letter:'ف',github:'#',live:'#'},
   {id:11,name:'پرس کاد',nameEn:'Porskad',desc:'سیستم اختصاصی فرم و نظرسنجی مؤسسه رکاد با طراحی مینیمال و متادیتای کامل SEO و Open Graph.',cat:'edu',tech:['React','Vite','Tailwind','SEO'],status:'ok',type:'فرانت‌اند',colors:['#0f3443','#34e89e'],letter:'پ',github:'https://github.com/Artin990/porskad',live:'https://artin990.github.io/porskad/'},
-  {id:12,name:'پورتفولیو (Next.js)',nameEn:'Portfolio — Three.js',desc:'پورتفولیوی شخصی با Next.js و Three.js برای رندر سه‌بعدی. شامل بخش‌های درباره، پروژه‌ها، تماس با انیمیشن‌های تعاملی.',cat:'personal',tech:['Next.js 16','React 19','Three.js','TypeScript','Tailwind 4'],status:'wip',type:'فرانت‌اند',colors:['#0f0c29','#6c5ce7'],letter:'P',github:'https://github.com/Artin990/portfolio-next',live:'https://artin990.github.io/portfolio-next/'},
-  {id:13,name:'پورتفولیو (Vite)',nameEn:'Portfolio — Tailwind',desc:'پورتفولیوی شخصی با React و Tailwind. طراحی مینیمال، صفحات درباره، پروژه‌ها، تماس و کامپوننت‌های اختصاصی.',cat:'personal',tech:['React 19','Vite','Tailwind 3','React Router'],status:'ok',type:'فرانت‌اند',colors:['#667eea','#764ba2'],letter:'P',github:'https://github.com/Artin990/portfolio-vite',live:'https://artin990.github.io/portfolio-vite/'}
+  {id:12,name:'پورتفولیو (Next.js)',nameEn:'Portfolio — Three.js',desc:'پورتفولیوی شخصی با Next.js و Three.js برای رندر سه‌بعدی. شامل بخش‌های درباره، پروژه‌ها، تماس با انیمیشن‌های تعاملی.',cat:'personal',tech:['Next.js 16','React 19','Three.js','TypeScript','Tailwind 4'],status:'wip',type:'فرانت‌اند',colors:['#0f0c29','#6c5ce7'],letter:'پ',github:'https://github.com/Artin990/portfolio-next',live:'https://artin990.github.io/portfolio-next/'},
+  {id:13,name:'پورتفولیو (Vite)',nameEn:'Portfolio — Tailwind',desc:'پورتفولیوی شخصی با React و Tailwind. طراحی مینیمال، صفحات درباره، پروژه‌ها، تماس و کامپوننت‌های اختصاصی.',cat:'personal',tech:['React 19','Vite','Tailwind 3','React Router'],status:'ok',type:'فرانت‌اند',colors:['#667eea','#764ba2'],letter:'پ',github:'https://github.com/Artin990/portfolio-vite',live:'https://artin990.github.io/portfolio-vite/'}
 ];
 
-const grid = document.getElementById('grid');
-let currentFilter = 'all';
+/* ================= helpers ================= */
+const FA = '۰۱۲۳۴۵۶۷۸۹';
+const faNum = n => String(n).replace(/\d/g, d => FA[d]);
 
+/* ================= hero stats ================= */
+document.getElementById('stTotal').textContent = faNum(projects.length);
+document.getElementById('stShop').textContent = faNum(projects.filter(p => p.cat==='ecommerce' || p.cat==='gaming').length);
+document.getElementById('stDone').textContent = faNum(projects.filter(p => p.status==='ok').length);
+
+/* ================= filters ================= */
+const filtersEl = document.getElementById('filters');
+const filterDefs = [['all','همه'],...Object.entries(CATS)];
+let currentFilter = 'all';
+filtersEl.innerHTML = filterDefs.map(([k,l]) =>
+  `<button class="chip${k==='all'?' active':''}" data-f="${k}">${l}</button>`).join('');
+filtersEl.addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if(!b) return;
+  currentFilter = b.dataset.f;
+  filtersEl.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c===b));
+  applyFilter();
+});
+
+/* ================= grid ================= */
+const grid = document.getElementById('grid');
 function render(){
-  grid.innerHTML = projects.map((p,i)=>{
-    const bg = `linear-gradient(135deg, ${p.colors[0]}, ${p.colors[1]})`;
-    const st = p.status==='ok'?'کامل شده':'در حال توسعه';
-    const sc = p.status==='ok'?'ok':'wip';
-    return `<div class="card" data-cat="${p.cat}" data-name="${p.name} ${p.nameEn}" style="animation-delay:${i*0.03}s" onclick="openModal(${i})">
-      <div class="card-thumb" style="background:${bg}">
-        <span class="card-thumb-label">${p.letter}</span>
-        <span class="card-thumb-cat">${ICONS[p.cat]} ${CAT_NAMES[p.cat]}</span>
+  grid.innerHTML = projects.map((p,i) => {
+    const bg = `linear-gradient(140deg, ${p.colors[0]}, ${p.colors[1]})`;
+    const st = p.status==='ok' ? 'کامل' : 'در حال توسعه';
+    const sc = p.status==='ok' ? 'ok' : 'wip';
+    return `<article class="card" data-cat="${p.cat}" data-search="${(p.name+' '+p.nameEn+' '+p.desc).toLowerCase()}" style="animation-delay:${Math.min(i*0.045,0.5)}s" tabindex="0" aria-label="${p.name}">
+      <div class="card-glow"></div>
+      <div class="thumb" style="background:${bg}">
+        <span class="thumb-letter">${p.letter}</span>
+        <span class="thumb-cat">${ICONS[p.cat]}${CATS[p.cat]}</span>
+        <span class="thumb-index">${String(p.id).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}</span>
       </div>
-      <div class="card-body">
-        <div class="card-title">${p.name} <span class="card-title-en">${p.nameEn}</span></div>
-        <div class="card-desc">${p.desc}</div>
-        <div class="card-tech">${p.tech.map(t=>`<span class="card-tech-tag">${t}</span>`).join('')}</div>
-        <div class="card-footer">
-          <a href="${p.live}" target="_blank" class="card-status" onclick="event.stopPropagation()"><span class="card-status-dot ${sc}"></span>${st}</a>
-          <span style="font-size:11px;color:var(--text-muted)">${p.type}</span>
+      <div class="body">
+        <div class="title-row"><span class="card-title">${p.name}</span><span class="card-title-en">${p.nameEn}</span></div>
+        <p class="card-desc">${p.desc}</p>
+        <div class="tech">${p.tech.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        <div class="footer-row">
+          <span class="status"><span class="dot ${sc}"></span>${st}</span>
+          <span class="open-hint">جزئیات
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m7-7-7 7 7 7"/></svg>
+          </span>
         </div>
       </div>
-    </div>`;
+    </article>`;
   }).join('');
-  filterProjects();
-}
 
-function filterProjects(){
-  const s = document.getElementById('searchInput').value.toLowerCase();
-  document.querySelectorAll('.card').forEach(c=>{
-    const cat = currentFilter==='all'||c.dataset.cat===currentFilter;
-    const nm = c.dataset.name.toLowerCase().includes(s);
-    c.classList.toggle('hidden',!cat||!nm);
+  grid.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+    card.addEventListener('keydown', e => { if(e.key==='Enter') openModal(card); });
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      card.style.setProperty('--mx', px*100+'%');
+      card.style.setProperty('--my', py*100+'%');
+      card.style.transform = `perspective(900px) rotateY(${(px-.5)*7}deg) rotateX(${(0.5-py)*6}deg) translateY(-3px)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform=''; });
   });
+  applyFilter();
 }
 
-let cfb = document.querySelector('.filter-btn.active');
-function setFilter(f,btn){
-  currentFilter=f;
-  if(cfb)cfb.classList.remove('active');
-  btn.classList.add('active');
-  cfb=btn;
-  filterProjects();
+function applyFilter(){
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  let visible = 0;
+  grid.querySelectorAll('.card').forEach(c => {
+    const show = (currentFilter==='all' || c.dataset.cat===currentFilter) && c.dataset.search.includes(q);
+    c.classList.toggle('hidden', !show);
+    if(show) visible++;
+  });
+  let empty = grid.querySelector('.empty');
+  if(!visible && !empty){
+    empty = document.createElement('div');
+    empty.className = 'empty';
+    empty.innerHTML = '<b>موجی پیدا نشد</b>عبارت دیگری جستجو کنید یا فیلتر را عوض کنید.';
+    grid.appendChild(empty);
+  } else if(visible && empty){ empty.remove(); }
 }
+document.getElementById('searchInput').addEventListener('input', applyFilter);
 
-function openModal(i){
-  const p = projects[i];
-  document.getElementById('mTitle').textContent = `${p.name} (${p.nameEn})`;
+/* ================= modal ================= */
+const overlay = document.getElementById('overlay');
+function openModal(card){
+  const idx = [...grid.querySelectorAll('.card')].indexOf(card);
+  const p = projects[idx]; if(!p) return;
+  document.getElementById('mHero').style.background = `linear-gradient(140deg, ${p.colors[0]}, ${p.colors[1]})`;
+  document.getElementById('mLetter').textContent = p.letter;
+  document.getElementById('mTitle').innerHTML = `${p.name}<small>${p.nameEn}</small>`;
   document.getElementById('mDesc').textContent = p.desc;
-  document.getElementById('mCat').textContent = CAT_NAMES[p.cat];
-  document.getElementById('mStatus').textContent = p.status==='ok'?'کامل شده':'در حال توسعه';
-  document.getElementById('mTech').textContent = p.tech.join('، ');
+  document.getElementById('mCat').textContent = CATS[p.cat];
+  document.getElementById('mStatus').textContent = p.status==='ok' ? 'کامل‌شده' : 'در حال توسعه';
   document.getElementById('mType').textContent = p.type;
-  document.getElementById('mTechTags').innerHTML = p.tech.map(t=>`<span class="modal-tech-item">${t}</span>`).join('');
-  document.getElementById('mGithub').href = p.github||'#';
-  document.getElementById('mLive').href = p.live||'#';
-  document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow='hidden';
+  document.getElementById('mTech').textContent = p.tech.length + ' فناوری';
+  document.getElementById('mTags').innerHTML = p.tech.map(t=>`<span>${t}</span>`).join('');
+  const live = document.getElementById('mLive'), gh = document.getElementById('mGithub');
+  live.href = p.live || '#'; live.classList.toggle('disabled', !p.live || p.live==='#');
+  gh.href = p.github || '#'; gh.classList.toggle('disabled', !p.github || p.github==='#');
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
 }
-function closeModal(){document.getElementById('modalOverlay').classList.remove('active');document.body.style.overflow=''}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+function closeModal(){ overlay.classList.remove('active'); document.body.style.overflow=''; }
+document.getElementById('mClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if(e.target===overlay) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
 render();
+</script>
+
+<script type="module">
+/* ================= three.js ocean =================
+   Particle wave field — brand teal on abyss navy.
+   Mouse creates a ripple; scroll gently raises the horizon.
+   Falls back silently (page stays usable) if WebGL is missing. */
+try{
+  const THREE = await import('./assets/vendor/three.module.min.js');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const canvas = document.getElementById('ocean');
+  const renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:false});
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+  camera.position.set(0, 3.2, 9);
+  camera.lookAt(0, 0, 0);
+
+  // particle grid sized to viewport
+  const isSmall = innerWidth < 720;
+  const COLS = isSmall ? 90 : 150, ROWS = isSmall ? 50 : 80;
+  const SEP = 0.16, W = COLS*SEP, H = ROWS*SEP;
+  const N = COLS*ROWS;
+  const pos = new Float32Array(N*3), base = new Float32Array(N*2);
+  let k = 0;
+  for(let i=0;i<COLS;i++) for(let j=0;j<ROWS;j++){
+    const x = i*SEP - W/2, z = j*SEP - H/2;
+    base[k*2] = x; base[k*2+1] = z;
+    pos[k*3] = x; pos[k*3+1] = 0; pos[k*3+2] = z; k++;
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const mat = new THREE.PointsMaterial({
+    color:0x58bdaf, size:0.028, transparent:true, opacity:0.55,
+    sizeAttenuation:true, depthWrite:false, blending:THREE.AdditiveBlending
+  });
+  const points = new THREE.Points(geo, mat);
+  scene.add(points);
+
+  // second, deeper layer in navy for depth
+  const mat2 = mat.clone();
+  mat2.color.set(0x202a5a); mat2.opacity = 0.5; mat2.size = 0.034;
+  const points2 = new THREE.Points(geo, mat2);
+  points2.position.set(0.08, -0.35, -0.9);
+  scene.add(points2);
+
+  const mouse = {x:0, y:0, tx:0, ty:0};
+  addEventListener('mousemove', e => {
+    mouse.tx = (e.clientX/innerWidth)*2 - 1;
+    mouse.ty = (e.clientY/innerHeight)*2 - 1;
+  }, {passive:true});
+  addEventListener('scroll', () => {
+    camera.position.y = 3.2 + Math.min(scrollY/900, 1.4);
+  }, {passive:true});
+
+  function resize(){
+    renderer.setSize(innerWidth, innerHeight, false);
+    camera.aspect = innerWidth/innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  addEventListener('resize', resize);
+
+  let visible = true;
+  document.addEventListener('visibilitychange', () => { visible = !document.hidden; });
+
+  const clock = new THREE.Clock();
+  function tick(){
+    requestAnimationFrame(tick);
+    if(!visible) return;
+    const t = clock.getElapsedTime();
+    mouse.x += (mouse.tx - mouse.x)*0.05;
+    mouse.y += (mouse.ty - mouse.y)*0.05;
+
+    const p = geo.attributes.position.array;
+    for(let i=0;i<N;i++){
+      const x = base[i*2], z = base[i*2+1];
+      const wave = Math.sin(x*1.3 + t*0.9)*0.14
+                 + Math.cos(z*1.7 + t*0.65)*0.12
+                 + Math.sin((x+z)*0.8 + t*0.4)*0.08;
+      // mouse ripple — a moving mound
+      const dx = x - mouse.x*6, dz = z - mouse.y*4 - 1.5;
+      const d2 = dx*dx + dz*dz;
+      const ripple = Math.exp(-d2*0.55)*0.85;
+      p[i*3+1] = wave + ripple;
+    }
+    geo.attributes.position.needsUpdate = true;
+
+    points.rotation.y = mouse.x*0.04;
+    points2.rotation.y = mouse.x*0.04;
+    renderer.render(scene, camera);
+  }
+  if(!reduced) tick();
+}catch(err){
+  console.warn('ocean disabled:', err);
+}
 </script>
 </body>
 </html>
