@@ -284,7 +284,7 @@ a {
   display: block;
   z-index: -1000;
   object-fit: cover;
-  background: url(assets/image/hero/BO7_S01_COD-HP_Desktop-XL_BG\ copy.jpg);
+  background: url(assets/image/hero/BO7_S01_COD-HP_Desktop-XL_BG%20copy.jpg);
 }
 .hero-content {
   display: flex;
@@ -1130,7 +1130,7 @@ a {
   src: url(assets/fonts/D-DIN.woff2);
 }
 .background-div {
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   height: 100vh;
   display: flex;
   background-position: 50%;
@@ -1402,7 +1402,7 @@ a {
 
 .hero-bg {
   object-fit: cover;
-  background: url(assets/image/hero/BO7_S01_COD-HP_Desktop-XL_BG\ copy.jpg);
+  background: url(assets/image/hero/BO7_S01_COD-HP_Desktop-XL_BG%20copy.jpg);
   background-repeat: no-repeat;
   background-position: 40%;
 }
@@ -1598,7 +1598,7 @@ a {
 }
 .hero-bg {
   width: 100%;
-  background: url(assets/image/hero/BO7_S01_COD-HP_Desktop-L_BG\ copy.jpg);
+  background: url(assets/image/hero/BO7_S01_COD-HP_Desktop-L_BG%20copy.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -1809,7 +1809,7 @@ a {
 }
 .hero-bg {
   width: 100%;
-  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG\ \(1\)\ copy.jpg);
+  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG%20\(1\)%20copy.jpg);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -2189,7 +2189,7 @@ a {
 }
 .hero-bg {
   width: 100%;
-  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG\ \(1\)\ copy.jpg);
+  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG%20\(1\)%20copy.jpg);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -2569,7 +2569,7 @@ a {
 }
 .hero-bg {
   width: 100%;
-  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG\ \(1\)\ copy.jpg);
+  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG%20\(1\)%20copy.jpg);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -2949,7 +2949,7 @@ a {
 }
 .hero-bg {
   width: 100%;
-  background: url(assets/image/hero/BO7_S01_COD-HP_Desktop-L_BG\ copy.jpg);
+  background: url(assets/image/hero/BO7_S01_COD-HP_Desktop-L_BG%20copy.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 85%;
@@ -3331,7 +3331,7 @@ a {
 }
 .hero-bg {
   width: 100%;
-  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG\ \(1\)\ copy.jpg);
+  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG%20\(1\)%20copy.jpg);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -3718,7 +3718,7 @@ display: none;
 }
 .hero-bg {
   width: 100%;
-  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG\ \(1\)\ copy.jpg);
+  background: url(assets/image/hero/BO7_S01_COD-HP_Tablet-M_BG%20\(1\)%20copy.jpg);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -4122,7 +4122,7 @@ display: none;
 .hero-bg {
   justify-self: center;
   width: 100%;
-  background: url(assets/image/hero/COD-HP_Hero_Mobile-SM\ \(1\).webp);
+  background: url(assets/image/hero/COD-HP_Hero_Mobile-SM%20\(1\).webp);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -4536,7 +4536,7 @@ display: none;
 .hero-bg {
   justify-self: center;
   width: 100%;
-  background: url(assets/image/hero/COD-HP_Hero_Mobile-SM\ \(1\).webp);
+  background: url(assets/image/hero/COD-HP_Hero_Mobile-SM%20\(1\).webp);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -4955,7 +4955,7 @@ display: none;
 .hero-bg {
   justify-self: center;
   width: 100%;
-  background: url(assets/image/hero/COD-HP_Hero_Mobile-SM\ \(1\).webp);
+  background: url(assets/image/hero/COD-HP_Hero_Mobile-SM%20\(1\).webp);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -5298,7 +5298,7 @@ display: none;
 @media (max-width: 1920px){
   .background-div {
   height: 98vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5320,7 +5320,7 @@ display: none;
 @media (max-width: 1560px){ 
 .background-div {
   height: 100vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5352,7 +5352,7 @@ display: none;
 @media (max-width: 1600px){
   .background-div {
   height: 110vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5391,7 +5391,7 @@ display: none;
 @media (max-width: 1280px){
   .background-div {
   height: 110vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5433,7 +5433,7 @@ display: none;
 @media (max-width: 1024px){
   .background-div {
   height: 110vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5475,7 +5475,7 @@ display: none;
 @media (max-width: 1025px){
   .background-div {
   height: 110vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5517,7 +5517,7 @@ display: none;
 @media (max-width: 992px){
   .background-div {
   height: 110vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5561,7 +5561,7 @@ display: none;
 @media (max-width: 768px) {
 .background-div {
   height: 110vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
   }
@@ -5603,7 +5603,7 @@ display: none;
 @media (max-width: 767px){
   .background-div {
   height: 110vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5645,7 +5645,7 @@ display: none;
 @media (max-width: 524px){
 .background-div {
   height: 90vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5689,7 +5689,7 @@ display: none;
 @media (max-width: 480px){
 .background-div {
   height: 90vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5733,7 +5733,7 @@ display: none;
 @media (max-width: 430px){
 .background-div {
   height: 100vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
@@ -5775,7 +5775,7 @@ display: none;
 @media (max-width: 320px){
   .background-div {
   height: 110vh;
-  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG\ 1.webp);
+  background: url(assets/login-page/bg-img/SSO_Hero_BG_XLG%201.webp);
   background-position: 40%;
   background-repeat: no-repeat;
 }
