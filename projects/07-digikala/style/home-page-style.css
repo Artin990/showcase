@@ -11,7 +11,7 @@
 /* fonts */
 @font-face {
   font-family: "YEKAN PLUS";
-  src: url(..assets/fonts/YEKAN\ PLUS.TTF);
+  src: url(../assets/fonts/YEKAN\ PLUS.TTF);
 }
 
 a {
@@ -863,7 +863,7 @@ header {
   width: 60%;
   margin: auto;
   background-color: rgb(229, 229, 229);
-  background-image: url(..assets/img/freshPattern.svg);
+  background-image: url(../assets/img/freshPattern.svg);
   background-repeat: no-repeat;
   display: flex;
   align-items: center;

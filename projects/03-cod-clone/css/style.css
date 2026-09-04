@@ -1,18 +1,18 @@
 @font-face {
   font-family: Hitmarker-regular;
-  src: url(..assets/fonts/HitmarkerText-Regular.woff2);
+  src: url(../assets/fonts/HitmarkerText-Regular.woff2);
 }
 @font-face {
   font-family: Hitmarker-bold-head;
-  src: url(..assets/fonts/HitmarkerText-Bold.woff2);
+  src: url(../assets/fonts/HitmarkerText-Bold.woff2);
 }
 @font-face {
   font-family: Hitmarker-bold-hero;
-  src: url(..assets/fonts/HitmarkerCondensed-Black.woff2);
+  src: url(../assets/fonts/HitmarkerCondensed-Black.woff2);
 }
 @font-face {
   font-family: Hitmarker-mid-content;
-  src: url(..assets/fonts/HitmarkerCondensed-Regular.woff2);
+  src: url(../assets/fonts/HitmarkerCondensed-Regular.woff2);
 }
 * {
   padding: 0;
