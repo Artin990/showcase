@@ -1,8 +1,8 @@
 @font-face {
   font-family: bonyad kodak;
-  src: url(assets/fonts/BonyadeKoodak-VF.woff2);
-  src: url(assets/fonts/BonyadeKoodakFaNum-VF.woff2);
-  src: url(assets/fonts/BonyadeKoodakNoEn-VF.woff2);
+  src: url(../assets/fonts/BonyadeKoodak-VF.woff2);
+  src: url(../assets/fonts/BonyadeKoodakFaNum-VF.woff2);
+  src: url(../assets/fonts/BonyadeKoodakNoEn-VF.woff2);
 }
 
 
