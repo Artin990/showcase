@@ -12,7 +12,7 @@ a {
 }
 
 body {
-  background-image: url(..assets/img/Untitled-1%20copy.jpg);
+  background-image: url(../assets/img/Untitled-1%20copy.jpg);
   background-size: 100%;
   overflow-x: hidden !important;
 }
@@ -25,11 +25,11 @@ body {
 }
 @font-face {
   font-family: "UbisoftFont-bold";
-  src: url(..assets/fonts/Ubisoft%20Sans%20Bold.ttf);
+  src: url(../assets/fonts/Ubisoft%20Sans%20Bold.ttf);
 }
 @font-face {
   font-family: "UbisoftFont-regular";
-  src: url(..assets/fonts/Ubisoft%20Sans%20Regular.ttf);
+  src: url(../assets/fonts/Ubisoft%20Sans%20Regular.ttf);
 }
 .hide-box {
   opacity: 0 !important;
